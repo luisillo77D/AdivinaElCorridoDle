@@ -35,6 +35,7 @@ export const getSongSpoty = async () => {
   const axiosInstance = await createAxiosInstance();
   try {
     const id = await getDailySong();
+    console.log(id);
     const response = await axiosInstance.get(`/tracks/${id.idSpoty}`);
     return response.data;
   } catch (error) {
