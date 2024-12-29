@@ -8,7 +8,7 @@ export function GuessRow({ attempt, correctAnswer }) {
         <div
           key={index}
           className={`${getColorClass(value, Object.values(correctAnswer)[index], field)} 
-            p-2 rounded text-center text-white`}
+            p-2 rounded text-center text-white flex items-center justify-center`}
         >
           {Array.isArray(value) ? value.map((artist)=>{
             return artist + ' '

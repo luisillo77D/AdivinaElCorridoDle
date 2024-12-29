@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import { Header } from './components/Header';
 import { SearchForm } from './components/SearchForm';
 import { GuessGrid } from './components/GuessGrid';
@@ -11,6 +11,15 @@ function App() {
   // Example correct answer (in a real app, this would be fetched from a backend)
   const correctAnswer = dailySong[0];
 
+  const validacion = (guessSong) => {
+    const areArtistsEqual = (guessSong.artista.length === correctAnswer.artista.length) &&
+      guessSong.artista.every((artist, index) => artist === correctAnswer.artista[index]);
+    if (guessSong.nombre === correctAnswer.nombre &&
+      guessSong.album === correctAnswer.album &&
+    areArtistsEqual ) {
+    alert('¡Adivinaste la canción!');
+  }
+  };
 
 
   const handleSubmit = (e) => {
@@ -19,10 +28,8 @@ function App() {
     if (!guessSong) {
       return alert('No se encontró la canción');
     }
-    const newAttempt = {
-      titulo: guessSong.titulo,
-    };
     setAttempts([...attempts, guessSong]);
+    validacion(guessSong);
     setGuess('');
   };
 

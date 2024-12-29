@@ -16,7 +16,10 @@ export function getColorClass(value, correctValue,field) {
         return 'bg-gray-700'; // Earlier year
       }
     }
-    if (value.includes(correctValue[0])) return 'bg-yellow-500';
+    if(field === 'artista'){
+      if (value.some(val => correctValue.includes(val))) return 'bg-yellow-500';
+        }
+    if (value[0].includes(correctValue[0])) return 'bg-yellow-500';
     return 'bg-red-500';
   
   }
